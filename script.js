@@ -6,7 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroBob();
   initQuotes();
   initGame();
+  initCursor();
+  initMagnetic();
+  initTilt();
 });
+
+const HAS_FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /* ------------------------------------------------------------------
    Показываем красивую заглушку вместо картинки, если файл не найден
@@ -16,7 +21,7 @@ function initImageFallbacks() {
 
   images.forEach((img) => {
     img.addEventListener('error', () => {
-      const holder = img.closest('.img-card, .hero__bob-btn');
+      const holder = img.closest('.photo, .hero__bob-btn');
       if (!holder) return;
       holder.classList.add('img-missing');
       holder.setAttribute('data-placeholder-label', img.dataset.fallback);
@@ -30,21 +35,21 @@ function initImageFallbacks() {
 }
 
 /* ------------------------------------------------------------------
-   Летающие фоновые бананы
+   Летающие фоновые бананы (декоративные, еле заметные)
    ------------------------------------------------------------------ */
 function initFloatingBananas() {
   const field = document.getElementById('bananaField');
   if (!field) return;
 
-  const count = window.innerWidth < 640 ? 10 : 18;
+  const count = window.innerWidth < 640 ? 8 : 14;
 
   for (let i = 0; i < count; i++) {
     const span = document.createElement('span');
     span.textContent = '🍌';
     span.style.left = `${Math.random() * 100}%`;
-    span.style.animationDuration = `${10 + Math.random() * 12}s`;
-    span.style.animationDelay = `${Math.random() * 14}s`;
-    span.style.fontSize = `${1 + Math.random() * 1.4}rem`;
+    span.style.animationDuration = `${12 + Math.random() * 14}s`;
+    span.style.animationDelay = `${Math.random() * 16}s`;
+    span.style.fontSize = `${1 + Math.random() * 1.2}rem`;
     field.appendChild(span);
   }
 }
@@ -247,5 +252,79 @@ function initGame() {
   startBtn.addEventListener('click', startGame);
   window.addEventListener('resize', () => {
     if (running) moveBanana();
+  });
+}
+
+/* ------------------------------------------------------------------
+   Кастомный курсор-точка, растёт над интерактивными элементами
+   ------------------------------------------------------------------ */
+function initCursor() {
+  if (!HAS_FINE_POINTER) return;
+  const dot = document.getElementById('cursorDot');
+  if (!dot) return;
+
+  dot.classList.add('is-active');
+
+  window.addEventListener('pointermove', (e) => {
+    dot.style.left = `${e.clientX}px`;
+    dot.style.top = `${e.clientY}px`;
+  });
+
+  const hoverTargets = document.querySelectorAll('a, button, .photo, [data-magnetic]');
+  hoverTargets.forEach((el) => {
+    el.addEventListener('mouseenter', () => dot.classList.add('is-hovering'));
+    el.addEventListener('mouseleave', () => dot.classList.remove('is-hovering'));
+  });
+}
+
+/* ------------------------------------------------------------------
+   "Магнитные" кнопки — слегка тянутся к курсору
+   ------------------------------------------------------------------ */
+function initMagnetic() {
+  if (!HAS_FINE_POINTER) return;
+  const items = document.querySelectorAll('[data-magnetic], [data-magnetic-text]');
+
+  items.forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const strength = el.hasAttribute('data-magnetic-text') ? 0.25 : 0.35;
+      el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   Лёгкий 3D-наклон фотокарточек при наведении мыши
+   ------------------------------------------------------------------ */
+function initTilt() {
+  if (!HAS_FINE_POINTER) return;
+  const cards = document.querySelectorAll('.photo');
+
+  cards.forEach((card) => {
+    const baseRotation = card.classList.contains('photo--rot-l')
+      ? -3
+      : card.classList.contains('photo--rot-r')
+        ? 2.5
+        : 0;
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      const tiltX = py * -10;
+      const tiltY = px * 10;
+      card.style.transform =
+        `rotate(${baseRotation * 0.3}deg) perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `rotate(${baseRotation}deg)`;
+    });
   });
 }
