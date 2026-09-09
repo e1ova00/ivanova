@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Боб — миньон-легенда</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/bob-favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="banana-field" id="bananaField" aria-hidden="true"></div>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#top" class="navbar__logo">🍌 БОБ</a>
+      <nav class="navbar__nav" id="navMenu">
+        <a href="#about">О Бобе</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#quotes">Фразы</a>
+        <a href="#game">Игра</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <button class="navbar__burger" id="navBurger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero__glow"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Despicable Me / Гадкий Я</p>
+        <h1 class="hero__title">Привет, я <span>Боб!</span></h1>
+        <p class="hero__subtitle">
+          Самый маленький, самый добрый и самый разноглазый миньон на свете.
+          Обожаю бананы, своего плюшевого мишку Тима и весёлые проделки.
+        </p>
+        <div class="hero__actions">
+          <a href="#about" class="btn btn--primary">Узнать больше</a>
+          <a href="#game" class="btn btn--ghost">Играть с бананами 🍌</a>
+        </div>
+      </div>
+
+      <div class="hero__figure">
+        <button class="hero__bob-btn" id="bobHero" aria-label="Нажми на Боба">
+          <img src="images/bob-hero.png" alt="Боб-миньон машет рукой и держит плюшевого мишку Тима"
+               data-fallback="Картинка: bob-hero.png — Боб в полный рост, машет рукой, в комбинезоне, держит мишку Тима, весёлая улыбка, фон прозрачный">
+        </button>
+        <div class="speech-bubble" id="speechBubble">Белло!</div>
+        <div class="hero__platform"></div>
+      </div>
+
+      <a class="scroll-hint" href="#about" aria-label="Листать дальше">
+        <span></span>
+      </a>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section__inner about__inner">
+        <div class="about__media">
+          <div class="img-card img-card--tall">
+            <img src="images/bob-portrait.png" alt="Портрет Боба крупным планом"
+                 data-fallback="Картинка: bob-portrait.png — портрет Боба крупным планом, хорошо видны его разноцветные глаза (один зелёный, один карий), высота ~800x1000px">
+          </div>
+          <div class="badge-heart">💙</div>
+        </div>
+        <div class="about__text">
+          <p class="section__eyebrow">Досье миньона</p>
+          <h2 class="section__title">Кто такой Боб?</h2>
+          <p class="section__lead">
+            Боб — самый младший и самый низкорослый из миньонов-друзей Кевина и Стюарта.
+            У него есть одна особенная черта, по которой его узнают все фанаты:
+          </p>
+          <ul class="fact-list">
+            <li>
+              <span class="fact-list__icon">👀</span>
+              <div><strong>Разные глаза</strong> — один зелёный, другой карий. Такой вот миньон-уникум.</div>
+            </li>
+            <li>
+              <span class="fact-list__icon">🧸</span>
+              <div><strong>Лучший друг — Тим</strong>, потрёпанный плюшевый мишка, с которым Боб не расстаётся никогда.</div>
+            </li>
+            <li>
+              <span class="fact-list__icon">👑</span>
+              <div><strong>Бывший король Англии</strong> — да-да, в мультфильме «Миньоны» он вытащил Экскалибур из камня и недолго носил корону.</div>
+            </li>
+            <li>
+              <span class="fact-list__icon">🎈</span>
+              <div><strong>Добрый и наивный</strong> — самый милый и трогательный из всей троицы миньонов.</div>
+            </li>
+          </ul>
+          <div class="stat-row">
+            <div class="stat-card">
+              <span class="stat-card__num">1</span>
+              <span class="stat-card__label">плюшевый мишка Тим</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__num">2</span>
+              <span class="stat-card__label">разных цвета глаз</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__num">∞</span>
+              <span class="stat-card__label">любовь к бананам</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="section__inner">
+        <p class="section__eyebrow section__eyebrow--center">Фотоальбом</p>
+        <h2 class="section__title section__title--center">Галерея Боба</h2>
+        <p class="section__lead section__lead--center">
+          Вставьте сюда свои картинки — просто положите файлы с такими же именами в папку <code>images/</code>.
+        </p>
+
+        <div class="gallery__grid">
+          <figure class="img-card">
+            <img src="images/bob-king.png" alt="Боб в образе короля Англии с короной и мантией"
+                 data-fallback="Картинка: bob-king.png — Боб в короне и королевской мантии, держит скипетр или Экскалибур, тронный зал на фоне">
+            <figcaption>Король Боб I 👑</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/bob-teddy.png" alt="Боб крепко обнимает своего плюшевого мишку Тима"
+                 data-fallback="Картинка: bob-teddy.png — крупный план, Боб обнимает мишку Тима, мягкий тёплый свет, эмоция умиления">
+            <figcaption>Боб и Тим 🧸</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/minions-group.png" alt="Боб вместе с Кевином и Стюартом смеются"
+                 data-fallback="Картинка: minions-group.png — Боб, Кевин и Стюарт вместе, все смеются, комбинезоны, дружеская сцена">
+            <figcaption>Банда миньонов 🍌</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/bob-action.png" alt="Боб в шутливой боевой стойке с ковшом-игрушкой"
+                 data-fallback="Картинка: bob-action.png — Боб в динамичной позе, как будто готов к приключениям, размытый фон движения">
+            <figcaption>Приключение начинается!</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/bob-sleep.png" alt="Боб спит, обнимая мишку Тима"
+                 data-fallback="Картинка: bob-sleep.png — Боб сладко спит в кроватке, обнимая мишку Тима, ночная сцена, звёзды на фоне">
+            <figcaption>Тссс, Боб спит</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/bob-banana.png" alt="Боб с огромным бананом в руках"
+                 data-fallback="Картинка: bob-banana.png — Боб держит гигантский банан обеими руками, счастливое выражение лица">
+            <figcaption>Ммм, банан!</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quotes" id="quotes">
+      <div class="section__inner">
+        <p class="section__eyebrow section__eyebrow--center">Миньонский язык</p>
+        <h2 class="section__title section__title--center">Боб говорит</h2>
+        <p class="section__lead section__lead--center">Нажимай на кнопку и слушай (читай) фразочки Боба!</p>
+
+        <div class="quote-box">
+          <div class="quote-box__bubble" id="quoteText">Ba-na-na!</div>
+          <button class="btn btn--primary" id="quoteBtn">Ещё фразу 🎲</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game" id="game">
+      <div class="section__inner game__inner">
+        <div class="game__text">
+          <p class="section__eyebrow">Мини-игра</p>
+          <h2 class="section__title">Собери бананы для Боба!</h2>
+          <p class="section__lead">
+            Боб проголодался. Кликай по банану как можно быстрее — у тебя 10 секунд!
+            Лучший результат сохраняется в этом браузере.
+          </p>
+          <div class="game__stats">
+            <div class="game__stat">
+              <span class="game__stat-label">Счёт</span>
+              <span class="game__stat-value" id="gameScore">0</span>
+            </div>
+            <div class="game__stat">
+              <span class="game__stat-label">Время</span>
+              <span class="game__stat-value" id="gameTime">10</span>
+            </div>
+            <div class="game__stat">
+              <span class="game__stat-label">Рекорд</span>
+              <span class="game__stat-value" id="gameBest">0</span>
+            </div>
+          </div>
+          <button class="btn btn--primary" id="gameStart">Начать игру</button>
+        </div>
+        <div class="game__field">
+          <div class="game__arena" id="gameArena">
+            <button class="game__banana" id="gameBanana">🍌</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacts">
+    <div class="footer__inner">
+      <div class="footer__brand">🍌 БОБ</div>
+      <p>Фан-сайт-визитка, посвящённый Бобу из «Гадкого Я» и «Миньонов». Сделано с любовью к бананам.</p>
+      <p class="footer__meta">Despicable Me / Minions © Illumination &amp; Universal Pictures. Сайт создан фанатами в некоммерческих целях.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
