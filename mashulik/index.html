@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#2a2648">
+  <title>Машулик — уютный магазин растений</title>
+  <meta name="description" content="Машулик — уютный pixel-art симулятор магазина комнатных растений на HTML5 Canvas и чистом JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect x='5' y='11' width='6' height='4' fill='%23c26a4a'/%3E%3Crect x='4' y='10' width='8' height='2' fill='%23d47c5a'/%3E%3Crect x='7' y='4' width='2' height='6' fill='%235f8f5c'/%3E%3Crect x='3' y='3' width='4' height='4' fill='%237aa874'/%3E%3Crect x='9' y='2' width='4' height='5' fill='%235f8f5c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="stage">
+      <canvas id="game" width="480" height="270" aria-label="Игровая сцена магазина Машулик"></canvas>
+
+      <div id="hud" class="hidden"></div>
+      <div id="floaters"></div>
+      <div id="speech-layer"></div>
+      <div id="tip" class="hidden"></div>
+      <div id="dialog" class="hidden"></div>
+      <div id="panel-layer" class="hidden"><div id="panel" class="panel"></div></div>
+      <div id="menu" class="hidden"></div>
+      <div id="intro" class="hidden"></div>
+      <div id="toasts"></div>
+    </div>
+    <div id="rotate">Поверни устройство горизонтально 🌿</div>
+  </div>
+
+  <!-- Порядок важен: данные и утилиты → графика → сущности → системы → игра -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/PixelBuffer.js"></script>
+  <script src="js/Sprites.js"></script>
+  <script src="js/PlantArt.js"></script>
+  <script src="js/ShopArt.js"></script>
+  <script src="js/Entity.js"></script>
+  <script src="js/Player.js"></script>
+  <script src="js/Customer.js"></script>
+  <script src="js/Plant.js"></script>
+  <script src="js/Collision.js"></script>
+  <script src="js/Shop.js"></script>
+  <script src="js/ParticleSystem.js"></script>
+  <script src="js/AudioManager.js"></script>
+  <script src="js/SaveManager.js"></script>
+  <script src="js/Economy.js"></script>
+  <script src="js/Supplier.js"></script>
+  <script src="js/Renderer.js"></script>
+  <script src="js/MenuScene.js"></script>
+  <script src="js/InputHandler.js"></script>
+  <script src="js/UI.js"></script>
+  <script src="js/Game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
